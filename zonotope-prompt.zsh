@@ -36,11 +36,9 @@ add-zsh-hook chpwd prompt_chpwd
 # vcs theme                                                                #
 ############################################################################
 
-if [[ "$OSTYPE" == darwin* ]]; then US="○" SS="●"; else US="⚪" SS="⚫"; fi
-
-## show "*" whenever there are either staged or unstaged changes
-zstyle ':vcs_info:*:*' unstagedstr "%{$fg_bold[yellow]%}$US%{$reset_color%}"
-zstyle ':vcs_info:*:*' stagedstr "%{$fg_bold[yellow]%}$SS%{$reset_color%}"
+## show a marker whenever there are either staged or unstaged changes
+zstyle ':vcs_info:*:*' unstagedstr "%{$fg_bold[yellow]%}◦%{$reset_color%}"
+zstyle ':vcs_info:*:*' stagedstr "%{$fg_bold[yellow]%}∙%{$reset_color%}"
 
 ## set prompt git status message format
 zstyle ':vcs_info:git*' formats "(%{$fg[green]%}%s:%b%{$reset_color%}%c%u%m)"
@@ -55,14 +53,14 @@ function +vi-git-st() {
 
         # unpushed commits
         ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null |
-                    wc -l)
+                    wc -l | tr -d '[:space:]')
 
         (( $ahead )) && commits+=( "%{$fg[yellow]%}↑${ahead}%{$reset_color%}" )
 
 
         # unpulled commits
         behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null |
-                     wc -l)
+                     wc -l | tr -d '[:space:]')
 
         (( $behind )) && commits+=( "%{$fg[red]%}↓${behind}%{$reset_color%}")
 
@@ -104,7 +102,7 @@ PROMPT2="%{$fg_bold[black]%}%_> %{$reset_color%}"
 PROMPT3="%{$fg_bold[black]%}...> %{$reset_color%}"
 
 ## date and time in the right prompt. eg: [06/22/2013 12:59PM]
-RPROMPT="%{$fg_bold[grey]%}[%t - %D{%m/%d/%y}]%{$reset_color%}"
+RPROMPT="%{$fg_bold[grey]%}[%T]%{$reset_color%}"
 
 ## reset the prompt on <enter> for accurate command start times
 function _reset-prompt-and-accept-line {
