@@ -86,7 +86,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 # prompt                                                                   #
 ############################################################################
 
-## red username for root, yellow for everyone else
+## red username for root, cyan for everyone else
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="cyan"; fi
 
 ## main prompt. 3 lines:
@@ -108,8 +108,8 @@ PROMPT2="%{$fg_bold[black]%}%_> %{$reset_color%}"
 ## selection prompt
 PROMPT3="%{$fg_bold[black]%}...> %{$reset_color%}"
 
-## date and time in the right prompt. eg: [06/22/2013 12:59PM]
-RPROMPT="%{$fg_bold[grey]%}[%T]%{$reset_color%}"
+## day and time in the right prompt. eg: [9/22 13:44]
+RPROMPT="%{$fg_bold[grey]%}[%D{%-m/%d} %T]%{$reset_color%}"
 
 ## reset the prompt on <enter> for accurate command start times
 function _reset-prompt-and-accept-line {
