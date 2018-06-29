@@ -98,7 +98,7 @@ PROMPT=$'
 -------------------------------------------------------%
 %{$reset_color%}
 %{$fg[$NCOLOR]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%
-%{$fg[blue]%}%~/%{$reset_color%} %
+%{$fg[blue]%}%~%{$reset_color%} %
 %{$fg_bold[black]%}${vcs_info_msg_0_}%{$reset_color%}
 %{$fg_bold[black]%}%# >%{$reset_color%} '
 
