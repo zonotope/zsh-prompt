@@ -95,7 +95,7 @@ if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="cyan"; fi
 # 3. %/# >
 PROMPT=$'
 %{$fg_bold[grey]%}%
--------------------------------------------------------%
+------------------------------------------------------------%
 %{$reset_color%}
 %{$fg[$NCOLOR]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%
 %{$fg[blue]%}%~%{$reset_color%} %
