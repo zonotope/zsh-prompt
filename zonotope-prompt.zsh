@@ -95,7 +95,7 @@ if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="cyan"; fi
 # 3. %/# >
 PROMPT=$'
 %{$fg_bold[grey]%}%
-------------------------------------------------------------%
+-------------------------------------------------------%
 %{$reset_color%}
 %{$fg[$NCOLOR]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%}:%
 %{$fg[blue]%}%~%{$reset_color%} %
@@ -107,13 +107,3 @@ PROMPT2="%{$fg_bold[black]%}%_> %{$reset_color%}"
 
 ## selection prompt
 PROMPT3="%{$fg_bold[black]%}...> %{$reset_color%}"
-
-## day and time in the right prompt. eg: [9/22 13:44]
-RPROMPT="%{$fg_bold[grey]%}[%D{%-m/%d} %T]%{$reset_color%}"
-
-## reset the prompt on <enter> for accurate command start times
-function _reset-prompt-and-accept-line {
-    zle reset-prompt
-    zle .accept-line
-}
-zle -N accept-line _reset-prompt-and-accept-line
